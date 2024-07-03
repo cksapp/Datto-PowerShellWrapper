@@ -26,7 +26,11 @@ function Get-DattoSeat {
     Param (
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'index')]
         [ValidateNotNullOrEmpty()]
-        [int]$saasCustomerId
+        [int]$saasCustomerId,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'index')]
+        [ValidateSet( 'User', 'SharedMailbox', 'SharedDrive', 'Site', 'TeamSite', 'Team', IgnoreCase = $False)]
+        [string[]]$seatType
     )
 
     begin {

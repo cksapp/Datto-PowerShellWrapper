@@ -65,7 +65,7 @@ param(
                                 'endpoint_Agents', 'endpoint_Devices', 'endpoint_byDevice', 'endpoint_byDeviceAgent',
                                 'endpoint_byDeviceAlert', 'endpoint_byDeviceAsset', 'endpoint_byDeviceShare', 'endpoint_byDeviceVolume',
                                 'endpoint_Domains', 'endpoint_CustomerSeats', 'endpoint_CustomerApps',
-                                'saasCustomerId','externalSubscriptionId','seatType','remoteId','actionType'
+                                'saasCustomerId','externalSubscriptionId','remoteId','actionType' ## May remove all PSBoundParameters from bulkSeatChange as this should not require query parameters
 
         $query_Parameters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 

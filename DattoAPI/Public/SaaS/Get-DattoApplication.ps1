@@ -54,11 +54,7 @@ function Get-DattoApplication {
 
         [Parameter(Mandatory = $false, ParameterSetName = 'index')]
         [ValidateRange(0, [int]::MaxValue)]
-        [int]$daysUntil,
-
-        [Parameter(Mandatory = $false, ParameterSetName = 'index')]
-        [ValidateSet( 0, 1 )]
-        [int]$includeRemoteID
+        [int]$daysUntil
     )
 
     begin {

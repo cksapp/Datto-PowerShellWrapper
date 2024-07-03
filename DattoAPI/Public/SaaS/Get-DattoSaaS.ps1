@@ -91,13 +91,13 @@ function Get-DattoSaaS {
         [ValidateNotNullOrEmpty()]
         [int]$saasCustomerId,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerApps')]
-        [ValidateRange(0, [int]::MaxValue)]
-        [int]$daysUntil,
+        [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerSeats')]
+        [ValidateSet( 'User', 'SharedMailbox', 'SharedDrive', 'Site', 'TeamSite', 'Team', IgnoreCase = $False)]
+        [string[]]$seatType,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerApps')]
-        [ValidateSet( 0, 1 )]
-        [int]$includeRemoteID
+        [ValidateRange(0, [int]::MaxValue)]
+        [int]$daysUntil
     )
 
     begin {

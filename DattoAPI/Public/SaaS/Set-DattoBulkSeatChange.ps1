@@ -116,7 +116,7 @@ function Set-DattoBulkSeatChange {
             Write-Verbose "Running the [ $($PSCmdlet.ParameterSetName) ] parameterSet"
             Set-Variable -Name 'Datto_bulkSeatParameters' -Value $PSBoundParameters -Scope Global -Force
 
-            Invoke-DattoRequest -method PUT -resource_Uri $resource_Uri -uri_Filter $PSBoundParameters -data $request_Body
+            Invoke-DattoRequest -method PUT -resource_Uri $resource_Uri -data $request_Body #-uri_Filter $PSBoundParameters
 
         }
 
