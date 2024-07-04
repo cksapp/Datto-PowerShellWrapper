@@ -71,4 +71,4 @@ function Add-DattoBaseURI {
 
 }
 
-New-Alias -Name Set-DattoBaseURI -Value Add-DattoBaseURI
+New-Alias -Name Set-DattoBaseURI -Value Add-DattoBaseURI -Force
