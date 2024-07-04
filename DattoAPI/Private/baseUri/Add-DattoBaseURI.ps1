@@ -42,6 +42,7 @@ function Add-DattoBaseURI {
 #>
 
     [cmdletbinding()]
+    [Alias('Set-DattoBaseURI')]
     Param (
         [Parameter(Mandatory = $false , ValueFromPipeline = $true)]
         [string]$base_uri = 'https://api.datto.com/v1',
@@ -70,5 +71,3 @@ function Add-DattoBaseURI {
     end {}
 
 }
-
-New-Alias -Name Set-DattoBaseURI -Value Add-DattoBaseURI -Force

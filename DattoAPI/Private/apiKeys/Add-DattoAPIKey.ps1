@@ -41,6 +41,7 @@ function Add-DattoAPIKey {
 #>
 
     [cmdletbinding()]
+    [Alias('Set-DattoAPIKey')]
     Param (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -72,5 +73,3 @@ function Add-DattoAPIKey {
 
     end {}
 }
-
-New-Alias -Name Set-DattoAPIKey -Value Add-DattoAPIKey -Force
