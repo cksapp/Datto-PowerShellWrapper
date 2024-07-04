@@ -134,7 +134,7 @@ After installing this module, you will need to configure both the *base URI* & *
       - `Add-DattoBaseURI -base_uri http://myapi.gateway.celerium.org`
       <br>
 
-2. Run `Add-DattoAPIKey -Api_Key_Public 12345 -Api_Key_Secret 123456789`
+2. Run `Add-DattoAPIKey -Api_Key_Public 12345 -Api_Key_Secret ( ConvertTo-SecureString '123456789' -AsPlainText )`
    - It will prompt you to enter your API access tokens if you do not specify them.
    - Datto API access tokens are generated via the Datto portal at *Admin > Integrations*
    <br>
