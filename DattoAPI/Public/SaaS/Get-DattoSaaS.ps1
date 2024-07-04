@@ -114,7 +114,7 @@ function Get-DattoSaaS {
 
         Write-Verbose "Running the [ $($PSCmdlet.ParameterSetName) ] parameterSet"
 
-        Set-Variable -Name 'Datto_bcdrParameters' -Value $PSBoundParameters -Scope Global -Force
+        Set-Variable -Name 'Datto_saasParameters' -Value $PSBoundParameters -Scope Global -Force
 
         Invoke-DattoRequest -method GET -resource_Uri $resource_Uri -uri_Filter $PSBoundParameters
 
