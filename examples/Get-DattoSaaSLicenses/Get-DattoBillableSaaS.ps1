@@ -92,7 +92,7 @@ function Get-DattoSaaSBillable {
         }
 
         # Set your API key
-        Set-DattoAPIKey -Api_Key_Public $DattoPublicAPIKey -Api_Key_Secret ([System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DattoPrivateAPIKey)))
+        Set-DattoAPIKey -Api_Key_Public $DattoPublicAPIKey -Api_Key_Secret ([System.Runtime.InteropServices.Marshal]::PtrToStringBSTR([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DattoPrivateAPIKey)))
 
         # Test the API key
         try {
