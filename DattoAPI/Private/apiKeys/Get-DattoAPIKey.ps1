@@ -49,7 +49,7 @@ function Get-DattoAPIKey {
 
                     [PSCustomObject]@{
                         PublicKey = $Datto_Public_Key
-                        SecretKey = ( [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($Api_Key) ).ToString()
+                        SecretKey = ( [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($Api_Key) ).ToString()
                     }
                 }
                 else {
