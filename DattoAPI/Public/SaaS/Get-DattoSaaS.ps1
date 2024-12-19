@@ -103,7 +103,10 @@ function Get-DattoSaaS {
 
         switch ($PSCmdlet.ParameterSetName) {
             'index_Domains'         { $resource_uri = "/saas/domains" }
-            'index_byCustomerSeats' { $resource_uri = "/saas/$saasCustomerId/seats" }
+            'index_byCustomerSeats' {
+                $resource_uri = "/saas/$saasCustomerId/seats"
+                $PSBoundParameters['seatType'] = [string]($seatType -join ',') # Used to construct the seatType query parameter as a string type for the API
+            }
             'index_byCustomerApps'  { $resource_uri = "/saas/$saasCustomerId/applications" }
         }
 
@@ -113,7 +116,7 @@ function Get-DattoSaaS {
 
         Write-Verbose "Running the [ $($PSCmdlet.ParameterSetName) ] parameterSet"
 
-        Set-Variable -Name 'Datto_bcdrParameters' -Value $PSBoundParameters -Scope Global -Force
+        Set-Variable -Name 'Datto_saasParameters' -Value $PSBoundParameters -Scope Global -Force
 
         Invoke-DattoRequest -method GET -resource_Uri $resource_Uri -uri_Filter $PSBoundParameters
 
