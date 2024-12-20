@@ -55,7 +55,7 @@ function Get-DattoSeat {
     begin {
 
         $resource_uri = "/saas/$saasCustomerId/seats"
-        $PSBoundParameters['seatType'] = [string]($seatType -join ',') # Used to construct the seatType query parameter as a string type for the API
+        if ($PSBoundParameters.ContainsKey('seatType')) { $PSBoundParameters['seatType'] = [string]::Join(',', $PSBoundParameters['seatType']) } # Used to construct the seatType query parameter as a string type for the API
 
     }
 
