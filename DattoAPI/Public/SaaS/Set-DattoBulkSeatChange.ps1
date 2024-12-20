@@ -77,7 +77,7 @@ function Set-DattoBulkSeatChange {
 
 #>
 
-    [CmdletBinding(DefaultParameterSetName = 'set', SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'set', SupportsShouldProcess, ConfirmImpact = 'Medium')]
     Param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = 'set')]
         [ValidateNotNullOrEmpty()]
@@ -103,6 +103,10 @@ function Set-DattoBulkSeatChange {
     )
 
     begin {
+
+        if ($actionType -eq 'Unlicense') {
+            $ConfirmPreference = 'Medium'
+        }
 
         $resource_uri = "/saas/$saasCustomerId/$externalSubscriptionId/bulkSeatChange"
 
