@@ -53,6 +53,9 @@ function Set-DattoBulkSeatChange {
         Example:
             ab23-bdf234-1234-asdf
 
+    .PARAMETER Force
+        Force the bulk seat change without confirmation
+
     .EXAMPLE
         Set-DattoBulkSeatChange -saasCustomerId "123456" -externalSubscriptionId 'Classic:Office365:654321' -seatType "User" -actionType License -remoteId "ab23-bdf234-1234-asdf"
 
@@ -94,7 +97,9 @@ function Set-DattoBulkSeatChange {
 
         [Parameter(Mandatory = $True, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = 'set')]
         [ValidateNotNullOrEmpty()]
-        [string[]]$remoteId
+        [string[]]$remoteId,
+
+        [switch]$Force
     )
 
     begin {
@@ -111,7 +116,7 @@ function Set-DattoBulkSeatChange {
             ids         = $remoteId
         }
 
-        if ($PSCmdlet.ShouldProcess("saasCustomerId: [ $saasCustomerId ], externalSubscriptionId: [ $externalSubscriptionId, $remoteId ]", "actionType: [ $actionType $seatType ]")) {
+        if ($Force -or $PSCmdlet.ShouldProcess("saasCustomerId: [ $saasCustomerId ], externalSubscriptionId: [ $externalSubscriptionId, $remoteId ]", "actionType: [ $actionType $seatType ]")) {
 
             Write-Verbose "Running the [ $($PSCmdlet.ParameterSetName) ] parameterSet"
             Set-Variable -Name 'Datto_bulkSeatParameters' -Value $PSBoundParameters -Scope Global -Force
