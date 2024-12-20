@@ -10,10 +10,29 @@ function Get-DattoSeat {
     .PARAMETER saasCustomerId
         Defines the id of the Datto SaaS organization
 
+    .PARAMETER seatType
+        Defines the seat type to get
+
+        This is a case-sensitive value
+
+        Example:
+            Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+            Google:    'User', 'SharedDrive'
+
     .EXAMPLE
         Get-DattoSeat -saasCustomerId "123456"
 
         Gets the Datto SaaS protection seats from the define customer id
+
+    .EXAMPLE
+        Get-DattoSeat -saasCustomerId "123456" -seatType "User"
+
+        Gets the Datto SaaS protection seats from the define customer id filtered to 'User' seats
+
+    .EXAMPLE
+        Get-DattoSeat -saasCustomerId "123456" -seatType "User", "SharedMailbox"
+
+        Gets the Datto SaaS protection seats from the define customer id filtered to 'User' & 'SharedMailbox' seats
 
     .NOTES
         N\A

@@ -16,7 +16,7 @@ function Set-DattoBulkSeatChange {
         Defines the external Subscription ID used to set SaaS bulk seat changes
 
         The externalSubscriptionId can be found by referencing
-        the data returned from Get-DattoApplication
+        the data returned from Get-DattoDomain
 
         Example:
             'Classic:Office365:654321'
@@ -48,7 +48,7 @@ function Set-DattoBulkSeatChange {
     .PARAMETER remoteId
         Defines the target IDs to change
 
-        Remote IDs can be found by referencing the data returned from Get-DattoApplication
+        Remote IDs can be found by referencing the data returned from Get-DattoSeat
 
         Example:
             ab23-bdf234-1234-asdf

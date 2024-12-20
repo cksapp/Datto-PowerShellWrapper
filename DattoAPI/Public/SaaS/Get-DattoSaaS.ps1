@@ -38,18 +38,17 @@ function Get-DattoSaaS {
         Parameter Set:
             endpoint_CustomerApps
 
-    .PARAMETER includeRemoteID
-        Defines if remote IDs are included in the return
+    .PARAMETER seatType
+        Defines the seat type to get
 
-        Note:
-            0 = No
-            1 = Yes
+        This is a case-sensitive value
 
-        Allowed Values:
-            0, 1
+        Example:
+            Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+            Google:    'User', 'SharedDrive'
 
         Parameter Set:
-            endpoint_CustomerApps
+            endpoint_CustomerSeats
 
     .EXAMPLE
         Get-DattoSaaS

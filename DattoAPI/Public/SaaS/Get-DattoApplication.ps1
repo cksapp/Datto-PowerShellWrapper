@@ -17,27 +17,16 @@ function Get-DattoApplication {
 
         As of 2024-02, maximum value of '30' days returns data from the endpoint.
 
-    .PARAMETER includeRemoteID
-        Defines if remote IDs are included in the return
-
-        Note:
-            0 = No
-            1 = Yes
-
-        Allowed Values:
-            0, 1
-
     .EXAMPLE
         Get-DattoApplication -saasCustomerId "123456"
 
-        Gets the Datto SaaS protection backup data from the define customer ID and
-        does not include remote IDs
+        Gets the Datto SaaS protection backup data from the define customer ID
 
     .EXAMPLE
-        Get-DattoApplication -saasCustomerId "123456" -includeRemoteID 1
+        Get-DattoApplication -saasCustomerId "123456" -daysUntil 30
 
-        Gets the Datto SaaS protection backup data from the define customer ID and
-        includes remote IDs
+        Gets the Datto SaaS protection backup data from the define customer ID for
+        the last 30 days
 
     .NOTES
         N\A
