@@ -1,4 +1,6 @@
 ﻿Category,EndpointUri,Method,Function,Complete,Notes
+API,/api/spec,GET,Get-DattoAPISpec,YES,
+API,/api/spec/raw,GET,Get-DattoAPISpec,YES,
 BCDR,/bcdr/agent,GET,Get-DattoAgent,YES,Used for Endpoint Backup for PC agents (EB4PC)
 BCDR,/bcdr/device/{serialNumber}/asset/agent,GET,Get-DattoAgent,YES,
 BCDR,/bcdr/device/{serialNumber}/alert,GET,Get-DattoAlert,YES,

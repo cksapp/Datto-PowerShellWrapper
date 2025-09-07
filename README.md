@@ -35,13 +35,14 @@ Whether you use this project, have learned something from it, or just like it, p
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
+
 <br />
 <div align="center">
   <a href="https://celerium.org">
     <img src="https://raw.githubusercontent.com/Celerium/Datto-PowerShellWrapper/main/.github/images/Celerium_PoSHGitHub_DattoAPI.png" alt="Logo">
   </a>
 
-  <p align="center">
+<p align="center">
     <a href="https://www.powershellgallery.com/packages/DattoAPI" target="_blank">PowerShell Gallery</a>
     ·
     <a href="https://github.com/Celerium/Datto-PowerShellWrapper/issues/new/choose" target="_blank">Report Bug</a>
@@ -85,6 +86,8 @@ The [DattoAPI](https://www.datto.com/) offers users the ability to extract data 
 
 - :book: Project documentation can be found on [Github Pages](https://celerium.github.io/Datto-PowerShellWrapper/)
 - :book: Datto's REST API documentation on their management portal [here](https://portal.dattobackup.com/integrations/api) *[ Requires a login ]*.
+  - OpenAPI Spec in [`json` format](<https://api.datto.com/v1/api/spec>) *[ No Auth required ]*.
+  - OpenAPI Spec in **raw** [`yaml` format](https://api.datto.com/v1/api/spec) *[ No Auth required ]*.
 
 Datto features a REST API that makes use of common HTTP request methods. In order to maintain PowerShell best practices, only approved verbs are used.
 
@@ -129,17 +132,25 @@ Get-Help Get-DattoDevice -Full
 After installing this module, you will need to configure both the *base URI* & *API access tokens* that are used to talk with the Datto API.
 
 1. Run `Add-DattoBaseURI`
+
    - By default, Datto's `https://api.datto.com/v1` URI is used.
+
    - If you have your own API gateway or proxy, you may put in your own custom URI by specifying the `-base_uri` parameter:
-      - `Add-DattoBaseURI -base_uri http://myapi.gateway.celerium.org`
-      <br>
+
+     - `Add-DattoBaseURI -base_uri http://myapi.gateway.celerium.org`
+
+       <br>
 
 2. Run `Add-DattoAPIKey -Api_Key_Public 12345 -Api_Key_Secret 123456789`
+
    - It will prompt you to enter your API access tokens if you do not specify them.
+
    - Datto API access tokens are generated via the Datto portal at *Admin > Integrations*
-   <br>
+
+     <br>
 
 3. [**optional**] Run `Export-DattoModuleSettings`
+
    - This will create a config file at `%UserProfile%\DattoAPI` that holds the *base uri* & *API access tokens* information.
    - Next time you run `Import-Module -Name DattoAPI`, this configuration file will automatically be loaded.
    - :warning: Exporting module settings encrypts your API access tokens in a format that can **only be unencrypted by the user principal** that encrypted the secret. It makes use of .NET DPAPI, which for Windows uses reversible encrypted tied to your user principal. This means that you **cannot copy** your configuration file to another computer or user account and expect it to work.
@@ -154,22 +165,23 @@ Calling an API resource is as simple as running `Get-Datto<resourceName>`
 - The following is a table of supported functions and their corresponding API resources:
 - Table entries with [ `-` ] indicate that the functionality is **NOT** supported by the Datto API at this time.
 
-| Section   | API Resource       | Create | Read                          | Update                    | Delete |
-| --------- | ------------------ | ------ | ----------------------------- | ------------------------- | ------ |
-| Reporting | ActivityLog        | -      | `Get-DattoActivityLog`        | -                         | -      |
-| BCDR      | Agent              | -      | `Get-DattoAgent`              | -                         | -      |
-| BCDR      | Alert              | -      | `Get-DattoAlert`              | -                         | -      |
-| BCDR      | Asset              | -      | `Get-DattoAsset`              | -                         | -      |
-| BCDR      | **BCDR** *         | -      | `Get-DattoBCDR`               | -                         | -      |
-| BCDR      | Device             | -      | `Get-DattoDevice`             | -                         | -      |
-| BCDR      | Share              | -      | `Get-DattoShare`              | -                         | -      |
-| BCDR      | VMRestore          | -      | `Get-DattoVMRestore`          | -                         | -      |
-| BCDR      | Volume             | -      | `Get-DattoVolume`             | -                         | -      |
-| SaaS      | **SaaS** *         | -      | `Get-DattoSaaS`               | -                         | -      |
-| SaaS      | Domains            | -      | `Get-DattoDomain`             | -                         | -      |
-| SaaS      | Seats              | -      | `Get-DattoSeat`               | -                         | -      |
-| SaaS      | Applications       | -      | `Get-DattoApplication`        | -                         | -      |
-| SaaS      | BulkSeatChange     | -      | -                             | `Set-DattoBulkSeatChange` | -      |
+| Section   | API Resource   | Create | Read                   | Update                    | Delete |
+| --------- | -------------- | ------ | ---------------------- | ------------------------- | ------ |
+| Reporting | ActivityLog    | -      | `Get-DattoActivityLog` | -                         | -      |
+| OpenAPI   | Spec           | -      | `Get-DattoAPISpec`     | -                         | -      |
+| BCDR      | Agent          | -      | `Get-DattoAgent`       | -                         | -      |
+| BCDR      | Alert          | -      | `Get-DattoAlert`       | -                         | -      |
+| BCDR      | Asset          | -      | `Get-DattoAsset`       | -                         | -      |
+| BCDR      | **BCDR** *     | -      | `Get-DattoBCDR`        | -                         | -      |
+| BCDR      | Device         | -      | `Get-DattoDevice`      | -                         | -      |
+| BCDR      | Share          | -      | `Get-DattoShare`       | -                         | -      |
+| BCDR      | VMRestore      | -      | `Get-DattoVMRestore`   | -                         | -      |
+| BCDR      | Volume         | -      | `Get-DattoVolume`      | -                         | -      |
+| SaaS      | **SaaS** *     | -      | `Get-DattoSaaS`        | -                         | -      |
+| SaaS      | Domains        | -      | `Get-DattoDomain`      | -                         | -      |
+| SaaS      | Seats          | -      | `Get-DattoSeat`        | -                         | -      |
+| SaaS      | Applications   | -      | `Get-DattoApplication` | -                         | -      |
+| SaaS      | BulkSeatChange | -      | -                      | `Set-DattoBulkSeatChange` | -      |
 
 - :warning: `Get-DattoBCDR` & `Get-DattoSaaS` are special functions.
 - These are **NOT** endpoints in Datto's REST API and are a single set of commands that can run endpoints in their associate sections.
@@ -219,7 +231,7 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Celerium/D
 
 <div align="left">
 
-  <p align="left">
+<p align="left">
     ·
     <a href="https://celerium.org/#/contact" target="_blank">Website</a>
     ·
@@ -245,6 +257,7 @@ Big thank you to the following people and services as they have provided me with
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
+
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [Az_Pipeline-shield]:               https://img.shields.io/azure-devops/build/AzCelerium/DattoAPI/4?style=for-the-badge&label=DevOps_Build
