@@ -87,7 +87,7 @@ The [DattoAPI](https://www.datto.com/) offers users the ability to extract data 
 - :book: Project documentation can be found on [Github Pages](https://celerium.github.io/Datto-PowerShellWrapper/)
 - :book: Datto's REST API documentation on their management portal [here](https://portal.dattobackup.com/integrations/api) *[ Requires a login ]*.
   - OpenAPI Spec in [`json` format](<https://api.datto.com/v1/api/spec>) *[ No Auth required ]*.
-  - OpenAPI Spec in **raw** [`yaml` format](https://api.datto.com/v1/api/spec) *[ No Auth required ]*.
+  - OpenAPI Spec in **raw** [`yaml` format](https://api.datto.com/v1/api/spec/raw) *[ No Auth required ]*.
 
 Datto features a REST API that makes use of common HTTP request methods. In order to maintain PowerShell best practices, only approved verbs are used.
 
