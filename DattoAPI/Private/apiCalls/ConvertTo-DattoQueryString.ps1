@@ -4,11 +4,11 @@ function ConvertTo-DattoQueryString {
         Converts uri filter parameters
 
     .DESCRIPTION
-        The Invoke-DattoRequest cmdlet converts & formats uri filter parameters
+        The ConvertTo-DattoQueryString cmdlet converts & formats uri filter parameters
         from a function which are later used to make the full resource uri for
         an API call
 
-        This is an internal helper function the ties in directly with the
+        This is an internal helper function that ties in directly with the
         Invoke-DattoRequest & any public functions that define parameters
 
     .PARAMETER uri_Filter
@@ -44,7 +44,7 @@ function ConvertTo-DattoQueryString {
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
     [hashtable]$uri_Filter,
 
     [Parameter(Mandatory = $true)]
@@ -54,10 +54,6 @@ param(
     begin {}
 
     process {
-
-        if (-not $uri_Filter) {
-            return ""
-        }
 
         $excludedParameters =   'Debug', 'ErrorAction', 'ErrorVariable', 'InformationAction', 'InformationVariable',
                                 'OutBuffer', 'OutVariable', 'PipelineVariable', 'Verbose', 'WarningAction', 'WarningVariable',
@@ -69,20 +65,21 @@ param(
 
         $query_Parameters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
-        ForEach ( $Key in $uri_Filter.GetEnumerator() ){
+        if ($uri_Filter) {
+            ForEach ( $Key in $uri_Filter.GetEnumerator() ){
 
-            if( $excludedParameters -contains $Key.Key ){$null}
-            elseif ( $Key.Value.GetType().IsArray ){
-                Write-Verbose "[ $($Key.Key) ] is an array parameter"
-                foreach ($Value in $Key.Value) {
-                    #$ParameterName = $Key.Key
-                    $query_Parameters.Add($Key.Key, $Value)
+                if( $excludedParameters -contains $Key.Key ){$null}
+                elseif ( $Key.Value.GetType().IsArray ){
+                    Write-Verbose "[ $($Key.Key) ] is an array parameter"
+                    foreach ($Value in $Key.Value) {
+                        $query_Parameters.Add($Key.Key, $Value)
+                    }
                 }
-            }
-            else{
-                $query_Parameters.Add($Key.Key, $Key.Value)
-            }
+                else{
+                    $query_Parameters.Add($Key.Key, $Key.Value)
+                }
 
+            }
         }
 
         # Build the request and load it with the query string.

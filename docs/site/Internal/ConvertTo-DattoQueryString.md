@@ -20,7 +20,7 @@ ConvertTo-DattoQueryString [-uri_Filter] <Hashtable> [-resource_Uri] <String> [<
 ```
 
 ## DESCRIPTION
-The Invoke-DattoRequest cmdlet converts & formats uri filter parameters
+The ConvertTo-DattoQueryString cmdlet converts & formats uri filter parameters
 from a function which are later used to make the full resource uri for
 an API call
 
@@ -58,7 +58,7 @@ Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
