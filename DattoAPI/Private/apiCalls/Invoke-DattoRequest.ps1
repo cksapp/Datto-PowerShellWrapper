@@ -91,7 +91,7 @@ function Invoke-DattoRequest {
 
         $query_string = ConvertTo-DattoQueryString -uri_Filter $uri_Filter -resource_Uri $resource_Uri
 
-        Set-Variable -Name 'Datto_queryString' -Value $query_string -Scope Global -Force
+        Set-Variable -Name 'Datto_queryString' -Value $query_string -Scope Global -Force -Confirm:$False
 
         if ($null -eq $data) {
             $body = $null
@@ -114,7 +114,7 @@ function Invoke-DattoRequest {
                     $parameters['ContentType'] = 'application/json; charset=utf-8'
                 }
 
-            Set-Variable -Name 'Datto_invokeParameters' -Value $parameters -Scope Global -Force
+            Set-Variable -Name 'Datto_invokeParameters' -Value $parameters -Scope Global -Force -Confirm:$False
 
             if ($allPages){
 
