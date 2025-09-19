@@ -38,18 +38,17 @@ function Get-DattoSaaS {
         Parameter Set:
             endpoint_CustomerApps
 
-    .PARAMETER includeRemoteID
-        Defines if remote IDs are included in the return
+    .PARAMETER seatType
+        Defines the seat type to get
 
-        Note:
-            0 = No
-            1 = Yes
+        This is a case-sensitive value
 
-        Allowed Values:
-            0, 1
+        Example:
+            Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+            Google:    'User', 'SharedDrive'
 
         Parameter Set:
-            endpoint_CustomerApps
+            endpoint_CustomerSeats
 
     .EXAMPLE
         Get-DattoSaaS
@@ -91,20 +90,23 @@ function Get-DattoSaaS {
         [ValidateNotNullOrEmpty()]
         [int]$saasCustomerId,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerApps')]
-        [ValidateRange(0, [int]::MaxValue)]
-        [int]$daysUntil,
+        [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerSeats')]
+        [ValidateSet( 'User', 'SharedMailbox', 'SharedDrive', 'Site', 'TeamSite', 'Team', IgnoreCase = $False)]
+        [string[]]$seatType,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'index_byCustomerApps')]
-        [ValidateSet( 0, 1 )]
-        [int]$includeRemoteID
+        [ValidateRange(0, [int]::MaxValue)]
+        [int]$daysUntil
     )
 
     begin {
 
         switch ($PSCmdlet.ParameterSetName) {
             'index_Domains'         { $resource_uri = "/saas/domains" }
-            'index_byCustomerSeats' { $resource_uri = "/saas/$saasCustomerId/seats" }
+            'index_byCustomerSeats' {
+                $resource_uri = "/saas/$saasCustomerId/seats"
+                if ($PSBoundParameters.ContainsKey('seatType')) { $PSBoundParameters['seatType'] = [string]::Join(',', $PSBoundParameters['seatType']) } # Used to construct the seatType query parameter as a string type for the API
+            }
             'index_byCustomerApps'  { $resource_uri = "/saas/$saasCustomerId/applications" }
         }
 

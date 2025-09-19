@@ -16,7 +16,7 @@ function Set-DattoBulkSeatChange {
         Defines the external Subscription ID used to set SaaS bulk seat changes
 
         The externalSubscriptionId can be found by referencing
-        the data returned from Get-DattoApplication
+        the data returned from Get-DattoDomain
 
         Example:
             'Classic:Office365:654321'
@@ -48,10 +48,13 @@ function Set-DattoBulkSeatChange {
     .PARAMETER remoteId
         Defines the target IDs to change
 
-        Remote IDs can be found by referencing the data returned from Get-DattoApplication
+        Remote IDs can be found by referencing the data returned from Get-DattoSeat
 
         Example:
             ab23-bdf234-1234-asdf
+
+    .PARAMETER Force
+        Force the bulk seat change without confirmation
 
     .EXAMPLE
         Set-DattoBulkSeatChange -saasCustomerId "123456" -externalSubscriptionId 'Classic:Office365:654321' -seatType "User" -actionType License -remoteId "ab23-bdf234-1234-asdf"
@@ -74,7 +77,7 @@ function Set-DattoBulkSeatChange {
 
 #>
 
-    [CmdletBinding(DefaultParameterSetName = 'set', SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'set', SupportsShouldProcess, ConfirmImpact = 'Medium')]
     Param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = 'set')]
         [ValidateNotNullOrEmpty()]
@@ -94,10 +97,16 @@ function Set-DattoBulkSeatChange {
 
         [Parameter(Mandatory = $True, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = 'set')]
         [ValidateNotNullOrEmpty()]
-        [string[]]$remoteId
+        [string[]]$remoteId,
+
+        [switch]$Force
     )
 
     begin {
+
+        if ($actionType -eq 'Unlicense') {
+            $ConfirmPreference = 'Medium'
+        }
 
         $resource_uri = "/saas/$saasCustomerId/$externalSubscriptionId/bulkSeatChange"
 
@@ -111,12 +120,12 @@ function Set-DattoBulkSeatChange {
             ids         = $remoteId
         }
 
-        if ($PSCmdlet.ShouldProcess("saasCustomerId: [ $saasCustomerId ], externalSubscriptionId: [ $externalSubscriptionId, $remoteId ]", "actionType: [ $actionType $seatType ]")) {
+        if ($Force -or $PSCmdlet.ShouldProcess("saasCustomerId: [ $saasCustomerId ], externalSubscriptionId: [ $externalSubscriptionId, $remoteId ]", "actionType: [ $actionType $seatType ]")) {
 
             Write-Verbose "Running the [ $($PSCmdlet.ParameterSetName) ] parameterSet"
             Set-Variable -Name 'Datto_bulkSeatParameters' -Value $PSBoundParameters -Scope Global -Force -Confirm:$False
 
-            Invoke-DattoRequest -method PUT -resource_Uri $resource_Uri -uri_Filter $PSBoundParameters -data $request_Body
+            Invoke-DattoRequest -method PUT -resource_Uri $resource_Uri -data $request_Body #-uri_Filter $PSBoundParameters
 
         }
 

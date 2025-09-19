@@ -10,10 +10,29 @@ function Get-DattoSeat {
     .PARAMETER saasCustomerId
         Defines the id of the Datto SaaS organization
 
+    .PARAMETER seatType
+        Defines the seat type to get
+
+        This is a case-sensitive value
+
+        Example:
+            Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+            Google:    'User', 'SharedDrive'
+
     .EXAMPLE
         Get-DattoSeat -saasCustomerId "123456"
 
         Gets the Datto SaaS protection seats from the define customer id
+
+    .EXAMPLE
+        Get-DattoSeat -saasCustomerId "123456" -seatType "User"
+
+        Gets the Datto SaaS protection seats from the define customer id filtered to 'User' seats
+
+    .EXAMPLE
+        Get-DattoSeat -saasCustomerId "123456" -seatType "User", "SharedMailbox"
+
+        Gets the Datto SaaS protection seats from the define customer id filtered to 'User' & 'SharedMailbox' seats
 
     .NOTES
         N\A
@@ -26,12 +45,17 @@ function Get-DattoSeat {
     Param (
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'index')]
         [ValidateNotNullOrEmpty()]
-        [int]$saasCustomerId
+        [int]$saasCustomerId,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'index')]
+        [ValidateSet( 'User', 'SharedMailbox', 'SharedDrive', 'Site', 'TeamSite', 'Team', IgnoreCase = $False)]
+        [string[]]$seatType
     )
 
     begin {
 
         $resource_uri = "/saas/$saasCustomerId/seats"
+        if ($PSBoundParameters.ContainsKey('seatType')) { $PSBoundParameters['seatType'] = [string]::Join(',', $PSBoundParameters['seatType']) } # Used to construct the seatType query parameter as a string type for the API
 
     }
 
