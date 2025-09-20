@@ -22,13 +22,12 @@ Get-DattoSaaS [-endpoint_Domains] [<CommonParameters>]
 
 ### index_byCustomerSeats
 ```powershell
-Get-DattoSaaS [-endpoint_CustomerSeats] -saasCustomerId <Int32> [<CommonParameters>]
+Get-DattoSaaS [-endpoint_CustomerSeats] -saasCustomerId <Int32> [-seatType <String[]>] [<CommonParameters>]
 ```
 
 ### index_byCustomerApps
 ```powershell
-Get-DattoSaaS [-endpoint_CustomerApps] -saasCustomerId <Int32> [-daysUntil <Int32>] [-includeRemoteID <Int32>]
- [<CommonParameters>]
+Get-DattoSaaS [-endpoint_CustomerApps] -saasCustomerId <Int32> [-daysUntil <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,37 +131,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -seatType
+Defines the seat type to get
+
+This is a case-sensitive value
+
+Example:
+    Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+    Google:    'User', 'SharedDrive'
+
+Parameter Set:
+    endpoint_CustomerSeats
+
+```yaml
+Type: String[]
+Parameter Sets: index_byCustomerSeats
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -daysUntil
 Defines the number of days until the report should be generated
 
 If not set default value of '10' days is returned by the API.
 
 As of 2024-02, maximum value of '30' days returns data from the endpoint.
-
-Parameter Set:
-    endpoint_CustomerApps
-
-```yaml
-Type: Int32
-Parameter Sets: index_byCustomerApps
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -includeRemoteID
-Defines if remote IDs are included in the return
-
-Note:
-    0 = No
-    1 = Yes
-
-Allowed Values:
-    0, 1
 
 Parameter Set:
     endpoint_CustomerApps

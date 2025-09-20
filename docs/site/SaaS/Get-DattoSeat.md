@@ -16,7 +16,7 @@ Get Datto SaaS protection seats for a given customer
 ## SYNTAX
 
 ```powershell
-Get-DattoSeat -saasCustomerId <Int32> [<CommonParameters>]
+Get-DattoSeat -saasCustomerId <Int32> [-seatType <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,20 @@ Get-DattoSeat -saasCustomerId "123456"
 
 Gets the Datto SaaS protection seats from the define customer id
 
+### EXAMPLE 2
+```powershell
+Get-DattoSeat -saasCustomerId "123456" -seatType "User"
+```
+
+Gets the Datto SaaS protection seats from the define customer id filtered to 'User' seats
+
+### EXAMPLE 3
+```powershell
+Get-DattoSeat -saasCustomerId "123456" -seatType "User", "SharedMailbox"
+```
+
+Gets the Datto SaaS protection seats from the define customer id filtered to 'User' & 'SharedMailbox' seats
+
 ## PARAMETERS
 
 ### -saasCustomerId
@@ -46,6 +60,27 @@ Required: True
 Position: Named
 Default value: 0
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -seatType
+Defines the seat type to get
+
+This is a case-sensitive value
+
+Example:
+    Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'
+    Google:    'User', 'SharedDrive'
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

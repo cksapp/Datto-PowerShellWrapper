@@ -134,7 +134,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('a
 
         It "[ Test-DattoAPIKey ] with a bad API key should fail to authenticate" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             $Value = Test-DattoAPIKey 3>$null
             $Value.Message | Should -BeLike '*Unauthorized*'

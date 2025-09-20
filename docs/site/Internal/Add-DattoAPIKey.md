@@ -16,7 +16,7 @@ Sets the API public & secret keys used to authenticate API calls.
 ## SYNTAX
 
 ```powershell
-Add-DattoAPIKey [-Api_Key_Public] <String> [[-Api_Key_Secret] <String>] [<CommonParameters>]
+Add-DattoAPIKey [-Api_Key_Public] <String> [-Api_Key_Secret] <SecureString> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,11 +45,11 @@ The Datto API will use the string entered into the \[ -Api_Key_Public \] paramet
 public key & will then prompt to enter in the secret key.
 
 ### EXAMPLE 3
-```
-'12345' | Add-DattoAPIKey
+```powershell
+ConvertTo-SecureString '12345' -AsPlainText | Add-DattoAPIKey
 ```
 
-The Datto API will use the string entered as the secret key & will prompt to enter in the public key.
+The Datto API will use the secure string entered as the secret key & will prompt to enter in the public key.
 
 ## PARAMETERS
 
@@ -72,11 +72,11 @@ Accept wildcard characters: False
 Defines your API secret key.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)

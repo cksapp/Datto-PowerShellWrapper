@@ -132,7 +132,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
 
         It "Should export successfully" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             Export-DattoModuleSettings -dattoConfPath $exportPath -ErrorVariable moduleSettingsError -WarningAction SilentlyContinue
 
@@ -141,7 +141,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
 
         It "Configuration directory should be hidden" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             Export-DattoModuleSettings -dattoConfPath $exportPath -ErrorVariable moduleSettingsError -WarningAction SilentlyContinue
 
@@ -150,7 +150,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
 
         It "Configuration file should contain required values" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             Export-DattoModuleSettings -dattoConfPath $exportPath -ErrorVariable moduleSettingsError -WarningAction SilentlyContinue
 

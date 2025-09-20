@@ -126,14 +126,14 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('a
     Context "[ $commandName ] testing function" {
 
         It "Running [ $commandName ] should remove all apiKey variables" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Remove-DattoAPIKey
             $Datto_Public_Key | Should -BeNullOrEmpty
             $Datto_Secret_Key | Should -BeNullOrEmpty
         }
 
         It "If the [ Datto_Public_Key ] is already empty a warning should be thrown" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Remove-Variable -Name "Datto_Public_Key" -Scope global -Force
 
             Remove-DattoAPIKey -WarningAction SilentlyContinue -WarningVariable apiKeyWarning
@@ -141,7 +141,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('a
         }
 
         It "If the [ Datto_Secret_Key ] is already empty a warning should be thrown" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Remove-Variable -Name "Datto_Secret_Key" -Scope global -Force
 
             Remove-DattoAPIKey -WarningAction SilentlyContinue -WarningVariable apiKeyWarning
@@ -149,7 +149,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('a
         }
 
         It "If the apiKeys are already gone two warnings should be thrown" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Remove-DattoAPIKey
 
             Remove-DattoAPIKey -WarningAction SilentlyContinue -WarningVariable apiKeyWarning

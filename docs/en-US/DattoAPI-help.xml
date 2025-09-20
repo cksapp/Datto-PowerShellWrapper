@@ -2,6 +2,110 @@
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Get-DattoOpenAPI</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>DattoOpenAPI</command:noun>
+      <maml:description>
+        <maml:para>Retrieves the OpenAPI (Swagger) specification for the Datto API.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-DattoAPISpec cmdlet retrieves the OpenAPI (Swagger) specification for the Datto API. This specification provides a detailed description of the API endpoints, request and response formats, and other relevant information.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-DattoOpenAPI</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Endpoint does not require authentication.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in JSON format.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec -Raw</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in raw YAML format.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/_Unique/Get-DattoOpenAPI.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-DattoSwagger</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>DattoSwagger</command:noun>
+      <maml:description>
+        <maml:para>Retrieves the OpenAPI (Swagger) specification for the Datto API.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-DattoAPISpec cmdlet retrieves the OpenAPI (Swagger) specification for the Datto API. This specification provides a detailed description of the API endpoints, request and response formats, and other relevant information.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-DattoSwagger</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Endpoint does not require authentication.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in JSON format.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec -Raw</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in raw YAML format.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/_Unique/Get-DattoSwagger.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Set-DattoAPIKey</command:name>
       <command:verb>Set</command:verb>
       <command:noun>DattoAPIKey</command:noun>
@@ -44,9 +148,9 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>'12345' | Add-DattoAPIKey</dev:code>
+        <dev:code>ConvertTo-SecureString '12345' -AsPlainText | Add-DattoAPIKey</dev:code>
         <dev:remarks>
-          <maml:para>The Datto API will use the string entered as the secret key &amp; will prompt to enter in the public key.</maml:para>
+          <maml:para>The Datto API will use the secure string entered as the secret key &amp; will prompt to enter in the public key.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -117,6 +221,82 @@
       <maml:navigationLink>
         <maml:linkText>https://celerium.github.io/Datto-PowerShellWrapper/site/Internal/Add-DattoBaseURI.html</maml:linkText>
         <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/Internal/Add-DattoBaseURI.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-DattoAPISpec</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>DattoAPISpec</command:noun>
+      <maml:description>
+        <maml:para>Retrieves the OpenAPI (Swagger) specification for the Datto API.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-DattoAPISpec cmdlet retrieves the OpenAPI (Swagger) specification for the Datto API. This specification provides a detailed description of the API endpoints, request and response formats, and other relevant information.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-DattoAPISpec</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="yaml, yml">
+          <maml:name>raw</maml:name>
+          <maml:description>
+            <maml:para>If specified, retrieves the raw OpenAPI specification in YAML format.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="yaml, yml">
+        <maml:name>raw</maml:name>
+        <maml:description>
+          <maml:para>If specified, retrieves the raw OpenAPI specification in YAML format.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Endpoint does not require authentication.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in JSON format.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-DattoAPISpec -Raw</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the OpenAPI specification in raw YAML format.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/API/Get-DattoAPISpec.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:linkText>
+        <maml:uri>https://celerium.github.io/Datto-PowerShellWrapper/site/OpenAPI/Get-DattoAPISpec.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1891,14 +2071,14 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
           <maml:name>Api_Key_Secret</maml:name>
           <maml:description>
             <maml:para>Defines your API secret key.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>SecureString</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -1918,14 +2098,14 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
         <maml:name>Api_Key_Secret</maml:name>
         <maml:description>
           <maml:para>Defines your API secret key.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>SecureString</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -1955,9 +2135,9 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>'12345' | Add-DattoAPIKey</dev:code>
+        <dev:code>ConvertTo-SecureString '12345' -AsPlainText | Add-DattoAPIKey</dev:code>
         <dev:remarks>
-          <maml:para>The Datto API will use the string entered as the secret key &amp; will prompt to enter in the public key.</maml:para>
+          <maml:para>The Datto API will use the secure string entered as the secret key &amp; will prompt to enter in the public key.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -2086,13 +2266,13 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>The Invoke-DattoRequest cmdlet converts &amp; formats uri filter parameters from a function which are later used to make the full resource uri for an API call</maml:para>
-      <maml:para>This is an internal helper function the ties in directly with the Invoke-DattoRequest &amp; any public functions that define parameters</maml:para>
+      <maml:para>The ConvertTo-DattoQueryString cmdlet converts &amp; formats uri filter parameters from a function which are later used to make the full resource uri for an API call</maml:para>
+      <maml:para>This is an internal helper function that ties in directly with the Invoke-DattoRequest &amp; any public functions that define parameters</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>ConvertTo-DattoQueryString</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>uri_Filter</maml:name>
           <maml:description>
             <maml:para>Hashtable of values to combine a functions parameters with the resource_Uri parameter.</maml:para>
@@ -2120,7 +2300,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
         <maml:name>uri_Filter</maml:name>
         <maml:description>
           <maml:para>Hashtable of values to combine a functions parameters with the resource_Uri parameter.</maml:para>
@@ -3618,20 +3798,6 @@
           </dev:type>
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>includeRemoteID</maml:name>
-          <maml:description>
-            <maml:para>Defines if remote IDs are included in the return</maml:para>
-            <maml:para>Note:     0 = No     1 = Yes</maml:para>
-            <maml:para>Allowed Values:     0, 1</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-          <dev:type>
-            <maml:name>Int32</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>0</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -3661,20 +3827,6 @@
         </dev:type>
         <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>includeRemoteID</maml:name>
-        <maml:description>
-          <maml:para>Defines if remote IDs are included in the return</maml:para>
-          <maml:para>Note:     0 = No     1 = Yes</maml:para>
-          <maml:para>Allowed Values:     0, 1</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-        <dev:type>
-          <maml:name>Int32</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>0</dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -3688,14 +3840,14 @@
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Get-DattoApplication -saasCustomerId "123456"</dev:code>
         <dev:remarks>
-          <maml:para>Gets the Datto SaaS protection backup data from the define customer ID and does not include remote IDs</maml:para>
+          <maml:para>Gets the Datto SaaS protection backup data from the define customer ID</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Get-DattoApplication -saasCustomerId "123456" -includeRemoteID 1</dev:code>
+        <dev:code>Get-DattoApplication -saasCustomerId "123456" -daysUntil 30</dev:code>
         <dev:remarks>
-          <maml:para>Gets the Datto SaaS protection backup data from the define customer ID and includes remote IDs</maml:para>
+          <maml:para>Gets the Datto SaaS protection backup data from the define customer ID for the last 30 days</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -3802,6 +3954,21 @@
           </dev:type>
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>seatType</maml:name>
+          <maml:description>
+            <maml:para>Defines the seat type to get</maml:para>
+            <maml:para>This is a case-sensitive value</maml:para>
+            <maml:para>Example:     Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'     Google:    'User', 'SharedDrive'</maml:para>
+            <maml:para>Parameter Set:     endpoint_CustomerSeats</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-DattoSaaS</maml:name>
@@ -3835,21 +4002,6 @@
             <maml:para>Defines the number of days until the report should be generated</maml:para>
             <maml:para>If not set default value of '10' days is returned by the API.</maml:para>
             <maml:para>As of 2024-02, maximum value of '30' days returns data from the endpoint.</maml:para>
-            <maml:para>Parameter Set:     endpoint_CustomerApps</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-          <dev:type>
-            <maml:name>Int32</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>0</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>includeRemoteID</maml:name>
-          <maml:description>
-            <maml:para>Defines if remote IDs are included in the return</maml:para>
-            <maml:para>Note:     0 = No     1 = Yes</maml:para>
-            <maml:para>Allowed Values:     0, 1</maml:para>
             <maml:para>Parameter Set:     endpoint_CustomerApps</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -3914,26 +4066,26 @@
         <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>seatType</maml:name>
+        <maml:description>
+          <maml:para>Defines the seat type to get</maml:para>
+          <maml:para>This is a case-sensitive value</maml:para>
+          <maml:para>Example:     Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'     Google:    'User', 'SharedDrive'</maml:para>
+          <maml:para>Parameter Set:     endpoint_CustomerSeats</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>daysUntil</maml:name>
         <maml:description>
           <maml:para>Defines the number of days until the report should be generated</maml:para>
           <maml:para>If not set default value of '10' days is returned by the API.</maml:para>
           <maml:para>As of 2024-02, maximum value of '30' days returns data from the endpoint.</maml:para>
-          <maml:para>Parameter Set:     endpoint_CustomerApps</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-        <dev:type>
-          <maml:name>Int32</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>0</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>includeRemoteID</maml:name>
-        <maml:description>
-          <maml:para>Defines if remote IDs are included in the return</maml:para>
-          <maml:para>Note:     0 = No     1 = Yes</maml:para>
-          <maml:para>Allowed Values:     0, 1</maml:para>
           <maml:para>Parameter Set:     endpoint_CustomerApps</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -4009,6 +4161,20 @@
           </dev:type>
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>seatType</maml:name>
+          <maml:description>
+            <maml:para>Defines the seat type to get</maml:para>
+            <maml:para>This is a case-sensitive value</maml:para>
+            <maml:para>Example:     Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'     Google:    'User', 'SharedDrive'</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -4024,6 +4190,20 @@
         </dev:type>
         <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>seatType</maml:name>
+        <maml:description>
+          <maml:para>Defines the seat type to get</maml:para>
+          <maml:para>This is a case-sensitive value</maml:para>
+          <maml:para>Example:     Office365: 'User', 'SharedMailbox', 'Site', 'TeamSite', 'Team'     Google:    'User', 'SharedDrive'</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -4038,6 +4218,20 @@
         <dev:code>Get-DattoSeat -saasCustomerId "123456"</dev:code>
         <dev:remarks>
           <maml:para>Gets the Datto SaaS protection seats from the define customer id</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-DattoSeat -saasCustomerId "123456" -seatType "User"</dev:code>
+        <dev:remarks>
+          <maml:para>Gets the Datto SaaS protection seats from the define customer id filtered to 'User' seats</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Get-DattoSeat -saasCustomerId "123456" -seatType "User", "SharedMailbox"</dev:code>
+        <dev:remarks>
+          <maml:para>Gets the Datto SaaS protection seats from the define customer id filtered to 'User' &amp; 'SharedMailbox' seats</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -4080,7 +4274,7 @@
           <maml:name>externalSubscriptionId</maml:name>
           <maml:description>
             <maml:para>Defines the external Subscription ID used to set SaaS bulk seat changes</maml:para>
-            <maml:para>The externalSubscriptionId can be found by referencing the data returned from Get-DattoApplication</maml:para>
+            <maml:para>The externalSubscriptionId can be found by referencing the data returned from Get-DattoDomain</maml:para>
             <maml:para>Example:     'Classic:Office365:654321'     'Classic:GoogleApps:654321'</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -4124,7 +4318,7 @@
           <maml:name>remoteId</maml:name>
           <maml:description>
             <maml:para>Defines the target IDs to change</maml:para>
-            <maml:para>Remote IDs can be found by referencing the data returned from Get-DattoApplication</maml:para>
+            <maml:para>Remote IDs can be found by referencing the data returned from Get-DattoSeat</maml:para>
             <maml:para>Example:     ab23-bdf234-1234-asdf</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -4133,6 +4327,17 @@
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the bulk seat change without confirmation</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
@@ -4175,7 +4380,7 @@
         <maml:name>externalSubscriptionId</maml:name>
         <maml:description>
           <maml:para>Defines the external Subscription ID used to set SaaS bulk seat changes</maml:para>
-          <maml:para>The externalSubscriptionId can be found by referencing the data returned from Get-DattoApplication</maml:para>
+          <maml:para>The externalSubscriptionId can be found by referencing the data returned from Get-DattoDomain</maml:para>
           <maml:para>Example:     'Classic:Office365:654321'     'Classic:GoogleApps:654321'</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -4219,7 +4424,7 @@
         <maml:name>remoteId</maml:name>
         <maml:description>
           <maml:para>Defines the target IDs to change</maml:para>
-          <maml:para>Remote IDs can be found by referencing the data returned from Get-DattoApplication</maml:para>
+          <maml:para>Remote IDs can be found by referencing the data returned from Get-DattoSeat</maml:para>
           <maml:para>Example:     ab23-bdf234-1234-asdf</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -4228,6 +4433,18 @@
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Force the bulk seat change without confirmation</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>

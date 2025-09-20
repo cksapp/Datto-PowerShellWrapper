@@ -130,13 +130,13 @@ Describe "Testing the [ $buildTarget ] version of [ $commandName ] functions wit
             Get-Alias -Name Set-DattoAPIKey | Should -BeTrue
         }
 
-        It "[ -Api_Key_Secret ] should accept a value from the pipeline" {
-            "DattoApiKey" | Add-DattoAPIKey -Api_Key_Public '12345'
+        It "[ -Api_Key_Secret ] should accept a value from the pipeline as secure string" {
+            "DattoApiKey" | ConvertTo-SecureString -AsPlainText -Force | Add-DattoAPIKey -Api_Key_Public '12345'
             Get-DattoAPIKey | Should -Not -BeNullOrEmpty
         }
 
         It "When both parameters [ -Api_Key_Public ] & [ -Api_Key_Secret ] are called they should not return empty" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Get-DattoAPIKey | Should -Not -BeNullOrEmpty
         }
 

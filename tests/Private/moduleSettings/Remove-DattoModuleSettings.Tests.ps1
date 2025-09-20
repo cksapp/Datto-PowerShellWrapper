@@ -139,7 +139,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
 
         It "Saved configuration should be removed" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
             Remove-DattoModuleSettings -dattoConfPath $exportPath
@@ -152,7 +152,7 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
 
         It "Saved configuration & variables should be removed" {
             Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
             Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
             Remove-DattoModuleSettings -dattoConfPath $exportPath -andVariables

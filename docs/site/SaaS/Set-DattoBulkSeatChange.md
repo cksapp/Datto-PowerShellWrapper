@@ -17,7 +17,7 @@ Sets Datto SaaS Protection bulk seat changes
 
 ```powershell
 Set-DattoBulkSeatChange -saasCustomerId <Int32> -externalSubscriptionId <String> -seatType <String>
- -actionType <String> -remoteId <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -actionType <String> -remoteId <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Defines the external Subscription ID used to set SaaS bulk seat changes
 
 The externalSubscriptionId can be found by referencing
-the data returned from Get-DattoApplication
+the data returned from Get-DattoDomain
 
 Example:
     'Classic:Office365:654321'
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ### -remoteId
 Defines the target IDs to change
 
-Remote IDs can be found by referencing the data returned from Get-DattoApplication
+Remote IDs can be found by referencing the data returned from Get-DattoSeat
 
 Example:
     ab23-bdf234-1234-asdf
@@ -145,6 +145,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Force
+Force the bulk seat change without confirmation
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -16,8 +16,7 @@ Get Datto SaaS protection backup data for a given customer
 ## SYNTAX
 
 ```powershell
-Get-DattoApplication -saasCustomerId <Int32> [-daysUntil <Int32>] [-includeRemoteID <Int32>]
- [<CommonParameters>]
+Get-DattoApplication -saasCustomerId <Int32> [-daysUntil <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,16 +30,15 @@ backup data for a given customer
 Get-DattoApplication -saasCustomerId "123456"
 ```
 
-Gets the Datto SaaS protection backup data from the define customer ID and
-does not include remote IDs
+Gets the Datto SaaS protection backup data from the define customer ID
 
 ### EXAMPLE 2
 ```powershell
-Get-DattoApplication -saasCustomerId "123456" -includeRemoteID 1
+Get-DattoApplication -saasCustomerId "123456" -daysUntil 30
 ```
 
-Gets the Datto SaaS protection backup data from the define customer ID and
-includes remote IDs
+Gets the Datto SaaS protection backup data from the define customer ID for
+the last 30 days
 
 ## PARAMETERS
 
@@ -65,28 +63,6 @@ Defines the number of days until the report should be generated
 If not set default value of '10' days is returned by the API.
 
 As of 2024-02, maximum value of '30' days returns data from the endpoint.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -includeRemoteID
-Defines if remote IDs are included in the return
-
-Note:
-    0 = No
-    1 = Yes
-
-Allowed Values:
-    0, 1
 
 ```yaml
 Type: Int32

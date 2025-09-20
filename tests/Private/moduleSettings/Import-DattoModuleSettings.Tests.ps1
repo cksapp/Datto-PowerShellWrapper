@@ -139,26 +139,26 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('m
         }
 
         It "Saved configuration session should contain required variables" {
-            Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoBaseUri
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
-            Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
-            Import-DattoModuleSettings -dattoConfPath $exportPath
+                Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
+                Import-DattoModuleSettings -dattoConfPath $exportPath
 
-            (Get-Variable -Name Datto_Base_URI).Value | Should -Not -BeNullOrEmpty
-            (Get-Variable -Name Datto_Public_Key).Value | Should -Not -BeNullOrEmpty
-            (Get-Variable -Name Datto_Secret_Key).Value | Should -Not -BeNullOrEmpty
-            (Get-Variable -Name Datto_JSON_Conversion_Depth).Value | Should -Not -BeNullOrEmpty
+                (Get-Variable -Name Datto_Base_URI).Value | Should -Not -BeNullOrEmpty
+                (Get-Variable -Name Datto_Public_Key).Value | Should -Not -BeNullOrEmpty
+                (Get-Variable -Name Datto_Secret_Key).Value | Should -Not -BeNullOrEmpty
+                (Get-Variable -Name Datto_JSON_Conversion_Depth).Value | Should -Not -BeNullOrEmpty
         }
 
         It "Saved configuration session should NOT contain temp variables" {
-            Add-DattoBaseUri
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoBaseUri
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
 
-            Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
-            Import-DattoModuleSettings -dattoConfPath $exportPath
+                Export-DattoModuleSettings -dattoConfPath $exportPath -WarningAction SilentlyContinue
+                Import-DattoModuleSettings -dattoConfPath $exportPath
 
-            (Get-Variable -Name tmp_config -ErrorAction SilentlyContinue).Value | Should -BeNullOrEmpty
+                (Get-Variable -Name tmp_config -ErrorAction SilentlyContinue).Value | Should -BeNullOrEmpty
         }
 
     }

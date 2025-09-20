@@ -16,7 +16,7 @@ Converts uri filter parameters
 ## SYNTAX
 
 ```powershell
-ConvertTo-DattoQueryString [-uri_Filter] <Hashtable> [-resource_Uri] <String> [<CommonParameters>]
+ConvertTo-DattoQueryString [[-uri_Filter] <Hashtable>] [-resource_Uri] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The ConvertTo-DattoQueryString cmdlet converts & formats uri filter parameters
 from a function which are later used to make the full resource uri for
 an API call
 
-This is an internal helper function the ties in directly with the
+This is an internal helper function that ties in directly with the
 Invoke-DattoRequest & any public functions that define parameters
 
 ## EXAMPLES

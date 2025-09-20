@@ -125,32 +125,32 @@ Describe "Testing [ $commandName ] function with [ $pester_TestName ]" -Tag @('a
     Context "[ $commandName ] testing function" {
 
         It "When both parameters [ -Api_Key_Public ] & [ -Api_Key_Secret ] are called they should not return empty" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             Get-DattoAPIKey | Should -Not -BeNullOrEmpty
         }
 
         It "Pipeline  - [ -Api_Key_Public ] should return a string" {
-            "DattoApiKey" | Add-DattoAPIKey -Api_Key_Public '12345'
+                (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force) | Add-DattoAPIKey -Api_Key_Public '12345'
             (Get-DattoAPIKey).PublicKey | Should -BeOfType String
         }
 
         It "Pipeline  - [ -Api_Key_Secret ] should return a secure string" {
-            "DattoApiKey" | Add-DattoAPIKey -Api_Key_Public '12345'
+                (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force) | Add-DattoAPIKey -Api_Key_Public '12345'
             (Get-DattoAPIKey).SecretKey | Should -BeOfType SecureString
         }
 
         It "Parameter - [ -Api_Key_Public ] should return a string" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             (Get-DattoAPIKey).PublicKey | Should -BeOfType String
         }
 
         It "Parameter - [ -Api_Key_Secret ] should return a secure string" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             (Get-DattoAPIKey).SecretKey | Should -BeOfType SecureString
         }
 
         It "Using [ -plainText ] should return [ -Api_Key_Secret ] as a string" {
-            Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret "DattoApiKey"
+                Add-DattoAPIKey -Api_Key_Public '12345' -Api_Key_Secret (ConvertTo-SecureString -String "DattoApiKey" -AsPlainText -Force)
             (Get-DattoAPIKey -plainText).SecretKey | Should -BeOfType String
         }
 

@@ -36,6 +36,9 @@ Gets Datto BCDR alerts for a given device.
 ### [Get-DattoAPIKey](site/Internal/Get-DattoAPIKey.md)
 Gets the Datto API public & secret key global variables.
 
+### [Get-DattoAPISpec](site/API/Get-DattoAPISpec.md)
+Retrieves the OpenAPI (Swagger) specification for the Datto API.
+
 ### [Get-DattoApplication](site/SaaS/Get-DattoApplication.md)
 Get Datto SaaS protection backup data for a given customer
 

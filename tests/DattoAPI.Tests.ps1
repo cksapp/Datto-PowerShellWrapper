@@ -183,7 +183,7 @@ Describe "Testing the [ $buildTarget ] version of [ $moduleName ] with [ $pester
         }
 
         It "Manifest [ FunctionsToExport ] has valid data" {
-            ($Module.ExportedCommands).Count | Should -Be 30
+            ($Module.ExportedCommands).Count | Should -Be 33
         }
 
         It "Manifest [ CmdletsToExport ] is empty" {
@@ -196,7 +196,7 @@ Describe "Testing the [ $buildTarget ] version of [ $moduleName ] with [ $pester
 
         It "Manifest [ AliasesToExport ] has alias" {
             switch ($buildTarget){
-                'built'     { ($Module.ExportedAliases).Count |  Should -Be 2 }
+                'built'     { ($Module.ExportedAliases).Count |  Should -Be 4 }
                 'notBuilt'  { $Module.ExportedAliases |  Should -Not -BeNullOrEmpty }
             }
         }
